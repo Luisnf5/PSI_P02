@@ -34,7 +34,7 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<!-- Boton para agnadir persona -->
-							<button class="btn btn-primary">Añadir persona</button>
+							<button class="btn btn-primary">Agnadir persona</button>
 						</div>
 					</div>
 				</div>
@@ -44,7 +44,6 @@
 </template>
 
 <script setup>
-// Importacion de la funcion "ref" de Vue 3
 import { ref } from 'vue';
 
 // definicion del componente
@@ -60,8 +59,12 @@ const persona = ref({
 	email: '',
 });
 
+const emit = defineEmits(['add-persona']);
+
 const enviarFormulario = () => {
 	console.log('Works!');
+	// Emite un evento llamado 'add-persona' con el valor de la variable persona
+	emit('add-persona', persona.value);
 };
 </script>
 
