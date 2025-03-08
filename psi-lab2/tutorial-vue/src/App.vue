@@ -9,7 +9,8 @@
 		<div class="row">
 			<div class="col-md-12">
 				<formulario-persona @add-persona="agregarPersona" />
-				<tabla-personas :personas="personas" @delete-persona="eliminarPersona" />
+				<tabla-personas :personas="personas" @delete-persona="eliminarPersona"
+					@actualizar-persona="actualizarPersona" />
 			</div>
 		</div>
 	</div>
@@ -26,6 +27,15 @@ defineOptions({
 	name: 'app',
 });
 const personas = ref([]);
+const actualizarPersona = (id, personaActualizada) => {
+	try {
+		personas.value = personas.value.map(persona =>
+			persona.id === id ? personaActualizada : persona);
+	}
+	catch (error) {
+		console.error(error);
+	}
+}
 
 const agregarPersona = (persona) => {
 	let id = 0;
