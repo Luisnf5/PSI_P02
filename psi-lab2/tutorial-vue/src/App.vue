@@ -27,19 +27,6 @@ defineOptions({
 });
 const personas = ref([]);
 
-const guardarPersona = (persona) => {
-	if (!persona.nombre.length || !persona.apellido.length || !persona.email.length) {
-		return;
-	}
-	emit('actualizar-persona', persona.id, persona);
-	editando.value = null;
-};
-
-const cancelarEdicion = (persona) => {
-	Object.assign(persona, personaEditada.value);
-	editando.value = null;
-};
-
 const agregarPersona = (persona) => {
 	let id = 0;
 
