@@ -16,9 +16,27 @@
 				</thead>
 				<tbody>
 					<tr v-for="persona in personas" :key="persona.id">
-						<td>{{ persona.nombre }}</td>
-						<td>{{ persona.apellido }}</td>
-						<td>{{ persona.email }}</td>
+
+						<td v-if="editando === persona.id">
+							<input id="persona-nombre" v-model="persona.nombre" type="text" class="form-control" data-cy="persona-nombre">
+						</td>
+						<td v-else>
+							{{ persona.nombre }}
+						</td>
+
+						<td v-if="editando === persona.id">
+							<input v-model="persona.apellido" type="text" class="form-control">
+						</td>
+						<td v-else>
+							{{ persona.apellido }}
+						</td>
+
+						<td v-if="editando === persona.id">
+							<input v-model="persona.email" type="email" class="form-control">
+						</td>
+						<td v-else>
+							{{ persona.email }}
+						</td>
 						<td>
 							<button class="btn btn-info" data-cy="edit-button" @click="editarPersona(persona)">
 								✏️ Editar
