@@ -8,7 +8,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<formulario-persona /> <!-- NUEVO -->
+				<formulario-persona @add-persona="agregarPersona" />
 				<tabla-personas :personas="personas" />
 			</div>
 		</div>
@@ -17,7 +17,6 @@
 
 <script setup>
 import TablaPersonas from '@/components/TablaPersonas.vue'
-// NUEVO:
 import FormularioPersona from '@/components/FormularioPersona.vue'
 import { ref } from 'vue';
 
@@ -26,27 +25,16 @@ defineOptions({
 	// nombre del componente
 	name: 'app',
 });
-// Declaracion de una variable reactiva "personas" usando "ref"
-const personas = ref([
-	{
-		id: 1,
-		nombre: 'Jon',
-		apellido: 'Nieve',
-		email: 'jon@email.com',
-	},
-	{
-		id: 2,
-		nombre: 'Tyrion',
-		apellido: 'Lannister',
-		email: 'tyrion@email.com',
-	},
-	{
-		id: 3,
-		nombre: 'Daenerys',
-		apellido: 'Targaryen',
-		email: 'daenerys@email.com',
-	},
-]);
+const personas = ref([]);
+
+const agregarPersona = (persona) => {
+	let id = 0;
+
+	if (personas.value.length > 0) {
+		id = personas.value[personas.value.length - 1].id + 1;
+	}
+	personas.value = [...personas.value, { ...persona, id }];
+};
 </script>
 
 <style>
