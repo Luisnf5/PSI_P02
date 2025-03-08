@@ -1,47 +1,75 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
+<!-- App.vue -->
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div id="app" class="container">
+  <div class="row">
+      <div class="col-md-12">
+      <h1><b>Personas</b></h1>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-12">
+      <!-- Inclusion del componente "TablaPersonas" -->
+      <tabla-personas />
+      </div>
+  </div>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<!-- App.vue -->
+<template>
+  <div id="app" class="container">
+  <div class="row">
+      <div class="col-md-12">
+      <h1>Personas</h1>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-12">
+      <!-- Inclusion del componente "TablaPersonas" -->
+      <tabla-personas :personas="personas" />
+      </div>
+  </div>
+  </div>
+</template>
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+<script setup>
+// Importacion del componente 'TablaPersonas' y el metodo 'ref' de Vue 3
+import TablaPersonas from '@/components/TablaPersonas.vue'
+import { ref } from 'vue';
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+// Definicion del componente Vue
+defineOptions({
+  // Nombre del componente
+  name: 'app',
+});
+// Declaracion de una variable reactiva "personas" usando "ref"
+const personas = ref([
+{
+  id: 1,
+  nombre: 'Jon',
+  apellido: 'Nieve',
+  email: 'jon@email.com',
+},
+{
+  id: 2,
+  nombre: 'Tyrion',
+  apellido: 'Lannister',
+  email: 'tyrion@email.com',
+},
+{
+  id: 3,
+  nombre: 'Daenerys',
+  apellido: 'Targaryen',
+  email: 'daenerys@email.com',
+},
+]);
+</script>
+
+
+<style>
+  /* Estilos globales para todos los elementos button en la aplicacion */
+  button {
+  background: #009435;
+  border: 1px solid #009435;
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
