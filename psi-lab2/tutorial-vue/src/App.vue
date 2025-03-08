@@ -9,7 +9,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<formulario-persona @add-persona="agregarPersona" />
-				<tabla-personas :personas="personas" />
+				<tabla-personas :personas="personas" @delete-persona="eliminarPersona" />
 			</div>
 		</div>
 	</div>
@@ -34,6 +34,17 @@ const agregarPersona = (persona) => {
 		id = personas.value[personas.value.length - 1].id + 1;
 	}
 	personas.value = [...personas.value, { ...persona, id }];
+};
+
+const eliminarPersona = (id) => {
+	try {
+		personas.value = personas.value.filter(
+			u => u.id !== id
+		);
+	}
+	catch (error) {
+		console.error(error);
+	}
 };
 </script>
 
