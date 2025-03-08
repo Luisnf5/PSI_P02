@@ -1,6 +1,9 @@
 <!-- src/components/TablaPersonas.vue -->
 <template>
-	<div id="tabla-personas">
+	<div v-if="!personas.length" class="alert alert-info" role="alert">
+		No se han encontrado personas
+	</div>
+	<div v-else id="tabla-personas">
 		<table class="table">
 			<thead>
 				<tr>
