@@ -72,6 +72,7 @@ const procesando = ref(false);
 const correcto = ref(false);
 const error = ref(false);
 
+const nombre = ref(null);
 const persona = ref({
 	nombre: '',
 	apellido: '',
@@ -91,6 +92,7 @@ const enviarFormulario = () => {
 	}
 
 	emit('add-persona', persona.value);
+	nombre.value.focus();
 
 	// Limpiamos el formulario
 	persona.value = {
