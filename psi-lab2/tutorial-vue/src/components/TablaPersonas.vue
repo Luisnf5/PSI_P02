@@ -17,7 +17,8 @@
 					<td>{{ persona.email }}</td>
 					<td>
 						<!-- &#x1F5D1; is the wastebasket icon. Icons available at https://codepoints.net -->
-						<button class="btn btn-danger">&#x1F5D1; Eliminar</button>
+						<button class="btn btn-danger" @click="$emit('delete-persona', persona.id)">&#x1F5D1;
+							Eliminar</button>
 					</td>
 				</tr>
 			</tbody>
