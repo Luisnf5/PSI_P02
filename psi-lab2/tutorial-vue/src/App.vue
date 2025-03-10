@@ -1,4 +1,3 @@
-<!-- App.vue -->
 <template>
   <div
     id="app"
@@ -19,52 +18,52 @@
         />
       </div>
     </div>
+  <p> Count is {{ store.count }}</p>
   </div>
 </template>
 
 <script setup>
-import TablaPersonas from "@/components/TablaPersonas.vue";
-import FormularioPersona from "@/components/FormularioPersona.vue";
-import { ref } from "vue";
+import TablaPersonas from '@/components/TablaPersonas.vue'
+import FormularioPersona from '@/components/FormularioPersona.vue'
+import { ref, onMounted } from 'vue';
 
-// definicion del componente
 defineOptions({
-  // nombre del componente
-  name: "App",
+  name: 'app',
 });
+
 const personas = ref([]);
-const actualizarPersona = (id, personaActualizada) => {
+
+const listadoPersonas = async () => {
+  // Metodo para obtener un listado de personas
   try {
-    personas.value = personas.value.map((persona) =>
-      persona.id === id ? personaActualizada : persona
-    );
+    const response = await fetchh('https://my-json-server.typicode.com/rmarabini/people/personas/');
+    personas.value = await response.json();
   } catch (error) {
     console.error(error);
   }
 };
 
-const agregarPersona = (persona) => {
-  let id = 0;
-
-  if (personas.value.length > 0) {
-    id = personas.value[personas.value.length - 1].id + 1;
-  }
-  personas.value = [...personas.value, { ...persona, id }];
+const agregarPersona = async (persona) => {
+  // Metodo para agregar una persona
 };
 
-const eliminarPersona = (id) => {
-  try {
-    personas.value = personas.value.filter((u) => u.id !== id);
-  } catch (error) {
-    console.error(error);
-  }
+const eliminarPersona = async (persona_id) => {
+  // Metodo para eliminar una persona
 };
+
+const actualizarPersona = async (id, personaActualizada) => {
+  // Metodo para actualizar una persona
+};
+
+// Fetch data when the component is mounted
+onMounted(() => {
+  listadoPersonas();
+});
 </script>
 
 <style>
-/* Estilos globales para todos los elementos button en la aplicacion */
-button {
-  background: #009435;
-  border: 1px solid #009435;
-}
+  button {
+    background: #009435;
+    border: 1px solid #009435;
+  }
 </style>
