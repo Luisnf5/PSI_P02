@@ -61,6 +61,16 @@ const agregarPersona = async (persona) => {
 
 const eliminarPersona = async (persona_id) => {
   // Metodo para eliminar una persona
+  const elimniarPersona = async (persona_id) => {
+    try {
+      await fetch('https://my-json-server.typicode.com/rmarabini/people/personas/'+persona_id+'/', {
+        method: 'DELETE',
+      });
+      personas.value = personas.value.filter((u) => u.id !== persona_id);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 };
 
 const actualizarPersona = async (id, personaActualizada) => {
