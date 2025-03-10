@@ -65,6 +65,17 @@ const eliminarPersona = async (persona_id) => {
 
 const actualizarPersona = async (id, personaActualizada) => {
   // Metodo para actualizar una persona
+  try {
+  const response = await fetch('https://my-json-server.typicode.com/rmarabini/people/personas/'+personaActualizada.id+'/', { 
+    method: 'PUT',
+    body: JSON.stringify(personaActualizada),
+    headers: { 'Content-type': 'application/json; charset=UTF -8' },
+    });
+  const personaActualizadaJS = await response.json();
+  personas.value = personas.value.map(u => (u.id === personaActualizada.id ? personaActualizadaJS : u));
+  } catch (error) {
+  console.error(error);
+  }
 };
 
 // Fetch data when the component is mounted
