@@ -45,6 +45,18 @@ const listadoPersonas = async () => {
 
 const agregarPersona = async (persona) => {
   // Metodo para agregar una persona
+  try {
+    const response = await fetch('https://my-json-server.typicode.com/rmarabini/people/personas/', {
+      method: 'POST',
+      body: JSON.stringify(persona),
+      headers: { 'Content-type': 'application/json; charset=UTF-8' },
+    });
+    
+    const personaCreada = await response.json();
+    personas.value = [...personas.value, personaCreada];
+    } catch (error) {
+    console.error(error);
+    }
 };
 
 const eliminarPersona = async (persona_id) => {
