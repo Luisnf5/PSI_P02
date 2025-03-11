@@ -93,19 +93,21 @@ DATABASES = {
 POSTGRESQL_URL = os.getenv('POSTGRESQL_URL')
 NEON_URL = os.getenv('NEON_URL')
 
-if os.environ.get('TESTING', '') == 1 in os.environ:
+if os.environ.get('TESTING', '') == '1':
+    print('Testingasdasdas')
     db_from_env = dj_database_url.config(default=POSTGRESQL_URL,
                                      conn_max_age=500)
 else:
     db_from_env = dj_database_url.config(default=NEON_URL,
                                      conn_max_age=500)
-
+    print('Not testing')
 DATABASES['default'].update(db_from_env)
 
 # CORS settings
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:5173',
+    'https://psi-p02.onrender.com'
 ]
 
 # Password validation
