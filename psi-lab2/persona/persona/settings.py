@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api'
+    'api.apps.ApiConfig',
     'rest_framework',
     'corsheaders',
 ]
@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'persona.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'nombre_de_tu_base',  # Cambiar por el nombre de tu base de datos
-        'USER': 'tu_usuario',  # Cambiar por el usuario de PostgreSQL
-        'PASSWORD': 'tu_contraseña',  # Cambiar por la contraseña de PostgreSQL
+        'NAME': 'psi',
+        'USER': 'alumnodb',
+        'PASSWORD': 'alumnodb',
         'HOST': 'localhost',
         'PORT': '5432',
     }
