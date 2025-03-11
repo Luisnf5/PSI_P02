@@ -7,4 +7,3 @@ from rest_framework import viewsets
 class PersonaViewSet(viewsets.ModelViewSet):
     queryset = Persona.objects.all()
     serializer_class = PersonaSerializer
-    
