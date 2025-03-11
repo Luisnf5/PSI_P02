@@ -27,11 +27,13 @@
 import TablaPersonas from '@/components/TablaPersonas.vue'
 import FormularioPersona from '@/components/FormularioPersona.vue'
 import { ref, onMounted } from 'vue';
-import { useCounterStore } from '@/stores/counter'; // usar en método correspondiente
+import { useCounterStore } from '@/stores/counter';
 
 defineOptions({
   name: 'app',
 });
+
+const myVar = import.meta.env.VITE_DJANGOURL;
 
 const store = useCounterStore();
 const personas = ref([]);
@@ -39,7 +41,7 @@ const personas = ref([]);
 const listadoPersonas = async () => {
   // Metodo para obtener un listado de personas
   try {
-    const response = await fetch('http://localhost:8001/api/v1/personas/');
+    const response = await fetch(`${myVar}/api/v1/personas/`);
     personas.value = await response.json();
   } catch (error) {
     console.error(error);
@@ -48,7 +50,7 @@ const listadoPersonas = async () => {
 
 const agregarPersona = async (persona) => {
   try {
-    const response = await fetch('http://localhost:8001/api/v1/personas/', {
+    const response = await fetch(`${myVar}/api/v1/personas/`, {
       method: 'POST',
       body: JSON.stringify(persona),
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
@@ -65,7 +67,7 @@ const agregarPersona = async (persona) => {
 const eliminarPersona = async (persona_id) => {
   // Metodo para eliminar una persona
   try {
-    await fetch('http://localhost:8001/api/v1/personas/'+persona_id+'/', {
+    await fetch(`${myVar}/api/v1/personas/${persona_id}/`, {
       method: "DELETE"
     });
     
@@ -78,7 +80,7 @@ const eliminarPersona = async (persona_id) => {
 const actualizarPersona = async (id, personaActualizada) => {
   // Metodo para actualizar una persona
   try {
-      const response = await fetch('http://localhost:8001/api/v1/personas/'+personaActualizada.id+'/', {
+      const response = await fetch(`${myVar}/api/v1/personas/${personaActualizada.id}/`, {
           method: 'PUT',
           body: JSON.stringify(personaActualizada),
             headers: { 'Content-type': 'application/json; charset=UTF-8' },
