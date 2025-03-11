@@ -1,6 +1,5 @@
 p1_venv/
 p1_env/
-p2_env/  # Añadido: Excluir entorno virtual de P2
 locallibrary/catalog/__pycache__
 locallibrary/catalog/tests/__pycache__
 locallibrary/.vscode
@@ -14,8 +13,6 @@ locallibrary/.env
 #Database
 *.sqlite3
 
-# Node.js
-node_modules/  # Añadido: Excluir node_modules
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -97,12 +94,6 @@ celerybeat-schedule
 
 # dotenv
 .env
-# Pero incluir los archivos .env necesarios para la práctica
-!psi-lab2/persona/.env
-!psi-lab2/tutorial-vue/.env.development
-!psi-lab2/tutorial-vue/.env.production
-!psi-lab2/twopages/.env.development
-!psi-lab2/twopages/.env.production
 
 # virtualenv
 venv/
