@@ -1,5 +1,6 @@
 p1_venv/
 p1_env/
+p2_env/
 locallibrary/catalog/__pycache__
 locallibrary/catalog/tests/__pycache__
 locallibrary/.vscode
@@ -13,6 +14,8 @@ locallibrary/.env
 #Database
 *.sqlite3
 
+# Node.js
+node_modules/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -94,6 +97,10 @@ celerybeat-schedule
 
 # dotenv
 .env
+# Excepciones para incluir archivos .env necesarios
+!psi-lab2/persona/.env
+!psi-lab2/tutorial-vue/.env.development
+!psi-lab2/tutorial-vue/.env.production
 
 # virtualenv
 venv/
