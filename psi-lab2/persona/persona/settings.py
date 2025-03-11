@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-p(k8nuahm$5z3n7#a4*g1cp+x)=e)0j209)f4==64aj+r+i92e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['psi-p02-persona.onrender.com','127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -93,11 +93,11 @@ DATABASES = {
 POSTGRESQL_URL = os.getenv('POSTGRESQL_URL')
 NEON_URL = os.getenv('NEON_URL')
 
-if os.environ.get('', 'TESTING') == 0 in os.environ:
-    db_from_env = dj_database_url.config(default=NEON_URL,
+if os.environ.get('TESTING', '') == 1 in os.environ:
+    db_from_env = dj_database_url.config(default=POSTGRESQL_URL,
                                      conn_max_age=500)
 else:
-    db_from_env = dj_database_url.config(default=POSTGRESQL_URL,
+    db_from_env = dj_database_url.config(default=NEON_URL,
                                      conn_max_age=500)
 
 DATABASES['default'].update(db_from_env)
